@@ -147,9 +147,9 @@
                                 <argument>--name</argument>
                                 <argument>test-mysql</argument>
                                 <argument>-e</argument>
-                                <argument>MYSQL_ROOT_PASSWORD=my-secret-pw</argument>
+                                <argument>MYSQL_ROOT_PASSWORD=root</argument>
                                 <argument>-e</argument>
-                                <argument>MYSQL_DATABASE=xdml</argument>
+                                <argument>MYSQL_DATABASE=blog</argument>
                                 <argument>-p</argument>
                                 <argument>3307:3306</argument>
                                 <argument>-d</argument>
@@ -197,7 +197,7 @@
                 <configuration>
                     <url>jdbc:mysql://localhost:3306/blog?useSSL=false&amp;allowPublicKeyRetrieval=true</url>
                     <user>root</user>
-                    <password>my-secret-pw</password>
+                    <password>root</password>
                 </configuration>
                 <executions>
                     <execution>
@@ -209,7 +209,47 @@
                         <configuration>
                             <url>jdbc:mysql://localhost:3307/blog?useSSL=false&amp;allowPublicKeyRetrieval=true</url>
                             <user>root</user>
-                            <password>my-secret-pw</password>
+                            <password>root</password>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.8</version>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-check</id>
+                        <!--                                                <goals>-->
+                        <!--                                                    <goal>check</goal>-->
+                        <!--                                                </goals>-->
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>BUNDLE</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>COMPLEXITY</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.60</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
                         </configuration>
                     </execution>
                 </executions>
