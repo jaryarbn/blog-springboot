@@ -3,9 +3,9 @@ package com.github.jaryarbn.entity;
 import java.util.List;
 
 public class BlogListResult extends Result<List<Blog>> {
-    private int total;
-    private int page;
-    private int totalPage;
+    private final int total;
+    private final int page;
+    private final int totalPage;
 
     public static BlogListResult success(List<Blog> data, int total, int page, int totalPage) {
         return new BlogListResult(ResultStatus.OK, "获取成功", data, total, page, totalPage);

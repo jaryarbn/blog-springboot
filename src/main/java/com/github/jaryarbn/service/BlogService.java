@@ -13,7 +13,7 @@ import java.util.Objects;
 
 @Service
 public class BlogService {
-    private BlogDao blogDao;
+    private final BlogDao blogDao;
 
     @Inject
     public BlogService(BlogDao blogDao) {

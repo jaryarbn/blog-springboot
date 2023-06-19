@@ -5,7 +5,7 @@ public abstract class Result<T> {
         OK("ok"),
         FAIL("fail");
 
-        private String status;
+        private final String status;
 
         ResultStatus(String status) {
             this.status = status;

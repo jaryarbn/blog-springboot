@@ -38,7 +38,7 @@ class AuthControllerTest {
     @Mock
     private AuthenticationManager authenticationManager;
 
-    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+    private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     @BeforeEach
     void setUp() {
